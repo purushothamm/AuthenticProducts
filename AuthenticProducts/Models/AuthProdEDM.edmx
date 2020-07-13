@@ -1,0 +1,593 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AuthProductModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Employee_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Employee_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Employee_Detai" Type="nvarchar" MaxLength="100" />
+          <Property Name="Employee_email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Employee_Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Created_Date" Type="datetime2" Precision="7" />
+          <Property Name="Employee_Type_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EthAddress">
+          <Key>
+            <PropertyRef Name="EthAddressID" />
+          </Key>
+          <Property Name="EthAddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EthPublicKey" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EthPrivateKey" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RecoveryPhrase" Type="nvarchar" MaxLength="200" />
+          <Property Name="WalletAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ImgFiles">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Name="FileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="100" />
+          <Property Name="Path" Type="nvarchar" MaxLength="500" />
+          <Property Name="FileOrder" Type="int" />
+          <Property Name="ProductID" Type="bigint" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Product_Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EthAddressID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Product_Type" Type="nvarchar" MaxLength="10" />
+          <Property Name="Product_Detail" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Product_Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="tinyint" Nullable="false" />
+          <Property Name="NumberOfTransactions" Type="int" />
+          <Property Name="TransactionFromAddress" Type="nchar" MaxLength="10" />
+          <Property Name="Balance" Type="decimal" Precision="10" Scale="5" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="TransactionDate" Type="datetime2" Precision="7" />
+          <Property Name="TransactionID" Type="bigint" Nullable="false" />
+          <Property Name="FirstTransactionID" Type="bigint" Nullable="false" />
+          <Property Name="Serial_Num" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Transactions">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionHash" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProductID" Type="bigint" Nullable="false" />
+          <Property Name="EthAddressID" Type="int" Nullable="false" />
+          <Property Name="GasUsed" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BlockNumber" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FromAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="ToAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="EthAmount" Type="decimal" Precision="10" Scale="5" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UserTypeID" Type="int" Nullable="false" />
+          <Property Name="InputDataText" Type="nvarchar" MaxLength="500" />
+          <Property Name="InputDataHex" Type="nvarchar" MaxLength="500" />
+          <Property Name="ErrorMessages" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserPhrase" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserKey" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="UserTypes">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserTypeDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AuthProduct.dbo.ProductEthAddress_V' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProductEthAddress_V">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+            <PropertyRef Name="Product_Name" />
+            <PropertyRef Name="Product_Key" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="P_CreatedBy" />
+            <PropertyRef Name="P_CreatedDate" />
+            <PropertyRef Name="EthPublicKey" />
+            <PropertyRef Name="EthPrivateKey" />
+            <PropertyRef Name="E_CreatedDate" />
+            <PropertyRef Name="E_CreatedBy" />
+            <PropertyRef Name="TransactionID" />
+            <PropertyRef Name="FirstTransactionID" />
+            <PropertyRef Name="IsDirectClaim" />
+          </Key>
+          <Property Name="Product_ID" Type="bigint" Nullable="false" />
+          <Property Name="Product_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Product_Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EthAddressID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Product_Type" Type="nvarchar" MaxLength="10" />
+          <Property Name="Product_Detail" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Product_Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="tinyint" Nullable="false" />
+          <Property Name="NumberOfTransactions" Type="int" />
+          <Property Name="TransactionFromAddress" Type="nchar" MaxLength="10" />
+          <Property Name="Balance" Type="decimal" Precision="10" Scale="5" />
+          <Property Name="P_CreatedBy" Type="int" Nullable="false" />
+          <Property Name="P_CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="TransactionDate" Type="datetime2" Precision="7" />
+          <Property Name="EthPublicKey" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EthPrivateKey" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RecoveryPhrase" Type="nvarchar" MaxLength="200" />
+          <Property Name="WalletAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="E_CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="E_CreatedBy" Type="int" Nullable="false" />
+          <Property Name="TransactionID" Type="bigint" Nullable="false" />
+          <Property Name="FirstTransactionID" Type="bigint" Nullable="false" />
+          <Property Name="Serial_Num" Type="nvarchar" MaxLength="100" />
+          <Property Name="TransactionHash_First" Type="nvarchar" MaxLength="100" />
+          <Property Name="TransactionHash_Now" Type="nvarchar" MaxLength="100" />
+          <Property Name="OwnerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="OwnerEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="Employee_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Employee_Detai" Type="nvarchar" MaxLength="100" />
+          <Property Name="Employee_email" Type="nvarchar" MaxLength="100" />
+          <Property Name="ErrorMessage" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsDirectClaim" Type="int" Nullable="false" />
+          <Property Name="Enter_ProductKey" Type="nvarchar" MaxLength="50" />
+          <Property Name="Enter_EthPrivateKey" Type="nvarchar" MaxLength="100" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityContainer Name="AuthProductModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EthAddress" EntityType="Self.EthAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImgFiles" EntityType="Self.ImgFiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductEthAddress_V" EntityType="Self.ProductEthAddress_V" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProductEthAddress_V].[Product_ID] AS [Product_ID], 
+    [ProductEthAddress_V].[Product_Name] AS [Product_Name], 
+    [ProductEthAddress_V].[Product_Key] AS [Product_Key], 
+    [ProductEthAddress_V].[EthAddressID] AS [EthAddressID], 
+    [ProductEthAddress_V].[UserID] AS [UserID], 
+    [ProductEthAddress_V].[Product_Type] AS [Product_Type], 
+    [ProductEthAddress_V].[Product_Detail] AS [Product_Detail], 
+    [ProductEthAddress_V].[Product_Address] AS [Product_Address], 
+    [ProductEthAddress_V].[IsActive] AS [IsActive], 
+    [ProductEthAddress_V].[NumberOfTransactions] AS [NumberOfTransactions], 
+    [ProductEthAddress_V].[TransactionFromAddress] AS [TransactionFromAddress], 
+    [ProductEthAddress_V].[Balance] AS [Balance], 
+    [ProductEthAddress_V].[P_CreatedBy] AS [P_CreatedBy], 
+    [ProductEthAddress_V].[P_CreatedDate] AS [P_CreatedDate], 
+    [ProductEthAddress_V].[TransactionDate] AS [TransactionDate], 
+    [ProductEthAddress_V].[EthPublicKey] AS [EthPublicKey], 
+    [ProductEthAddress_V].[EthPrivateKey] AS [EthPrivateKey], 
+    [ProductEthAddress_V].[RecoveryPhrase] AS [RecoveryPhrase], 
+    [ProductEthAddress_V].[WalletAddress] AS [WalletAddress], 
+    [ProductEthAddress_V].[UserName] AS [UserName], 
+    [ProductEthAddress_V].[Password] AS [Password], 
+    [ProductEthAddress_V].[Email] AS [Email], 
+    [ProductEthAddress_V].[E_CreatedDate] AS [E_CreatedDate], 
+    [ProductEthAddress_V].[E_CreatedBy] AS [E_CreatedBy], 
+    [ProductEthAddress_V].[TransactionID] AS [TransactionID], 
+    [ProductEthAddress_V].[FirstTransactionID] AS [FirstTransactionID], 
+    [ProductEthAddress_V].[Serial_Num] AS [Serial_Num], 
+    [ProductEthAddress_V].[TransactionHash_First] AS [TransactionHash_First], 
+    [ProductEthAddress_V].[TransactionHash_Now] AS [TransactionHash_Now], 
+    [ProductEthAddress_V].[OwnerName] AS [OwnerName], 
+    [ProductEthAddress_V].[OwnerEmail] AS [OwnerEmail], 
+    [ProductEthAddress_V].[Employee_Name] AS [Employee_Name], 
+    [ProductEthAddress_V].[Employee_Detai] AS [Employee_Detai], 
+    [ProductEthAddress_V].[Employee_email] AS [Employee_email], 
+    [ProductEthAddress_V].[ErrorMessage] AS [ErrorMessage], 
+    [ProductEthAddress_V].[IsDirectClaim] AS [IsDirectClaim], 
+    [ProductEthAddress_V].[Enter_ProductKey] AS [Enter_ProductKey], 
+    [ProductEthAddress_V].[Enter_EthPrivateKey] AS [Enter_EthPrivateKey], 
+    [ProductEthAddress_V].[ImagePath] AS [ImagePath]
+    FROM [dbo].[ProductEthAddress_V] AS [ProductEthAddress_V]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AuthProductModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AuthProductEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EthAddresses" EntityType="AuthProductModel.EthAddress" />
+          <EntitySet Name="Users" EntityType="AuthProductModel.User" />
+          <EntitySet Name="UserTypes" EntityType="AuthProductModel.UserType" />
+          <EntitySet Name="Employees" EntityType="AuthProductModel.Employee" />
+          <EntitySet Name="Products" EntityType="AuthProductModel.Product" />
+          <EntitySet Name="Transactions" EntityType="AuthProductModel.Transaction" />
+          <EntitySet Name="ImgFiles" EntityType="AuthProductModel.ImgFile" />
+          <EntitySet Name="ProductEthAddress_V" EntityType="AuthProductModel.ProductEthAddress_V" />
+        </EntityContainer>
+        <EntityType Name="EthAddress">
+          <Key>
+            <PropertyRef Name="EthAddressID" />
+          </Key>
+          <Property Name="EthAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EthPublicKey" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EthPrivateKey" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RecoveryPhrase" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="WalletAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserPhrase" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserKey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserTypeDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Employee_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Employee_Detai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Employee_email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Employee_Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Created_Date" Type="DateTime" Precision="7" />
+          <Property Name="Employee_Type_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Key" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EthAddressID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Product_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Detail" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Byte" Nullable="false" />
+          <Property Name="NumberOfTransactions" Type="Int32" />
+          <Property Name="TransactionFromAddress" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Balance" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="TransactionDate" Type="DateTime" Precision="7" />
+          <Property Name="TransactionID" Type="Int64" Nullable="false" />
+          <Property Name="FirstTransactionID" Type="Int64" Nullable="false" />
+          <Property Name="Serial_Num" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionHash" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductID" Type="Int64" Nullable="false" />
+          <Property Name="EthAddressID" Type="Int32" Nullable="false" />
+          <Property Name="GasUsed" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BlockNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FromAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ToAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EthAmount" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" />
+          <Property Name="InputDataText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="InputDataHex" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorMessages" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ImgFile">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Name="FileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ContentType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FileOrder" Type="Int32" />
+          <Property Name="ProductID" Type="Int64" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="ProductEthAddress_V">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+            <PropertyRef Name="Product_Name" />
+            <PropertyRef Name="Product_Key" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="P_CreatedBy" />
+            <PropertyRef Name="P_CreatedDate" />
+            <PropertyRef Name="EthPublicKey" />
+            <PropertyRef Name="EthPrivateKey" />
+            <PropertyRef Name="E_CreatedDate" />
+            <PropertyRef Name="E_CreatedBy" />
+            <PropertyRef Name="TransactionID" />
+            <PropertyRef Name="FirstTransactionID" />
+            <PropertyRef Name="IsDirectClaim" />
+          </Key>
+          <Property Name="Product_ID" Type="Int64" Nullable="false" />
+          <Property Name="Product_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Key" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EthAddressID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Product_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Detail" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Byte" Nullable="false" />
+          <Property Name="NumberOfTransactions" Type="Int32" />
+          <Property Name="TransactionFromAddress" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Balance" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="P_CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="P_CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="TransactionDate" Type="DateTime" Precision="7" />
+          <Property Name="EthPublicKey" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EthPrivateKey" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RecoveryPhrase" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="WalletAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="E_CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="E_CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="TransactionID" Type="Int64" Nullable="false" />
+          <Property Name="FirstTransactionID" Type="Int64" Nullable="false" />
+          <Property Name="Serial_Num" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionHash_First" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionHash_Now" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OwnerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Employee_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Employee_Detai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Employee_email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsDirectClaim" Type="Int32" Nullable="false" />
+          <Property Name="Enter_ProductKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Enter_EthPrivateKey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AuthProductModelStoreContainer" CdmEntityContainer="AuthProductEntities">
+          <EntitySetMapping Name="EthAddresses">
+            <EntityTypeMapping TypeName="AuthProductModel.EthAddress">
+              <MappingFragment StoreEntitySet="EthAddress">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="WalletAddress" ColumnName="WalletAddress" />
+                <ScalarProperty Name="RecoveryPhrase" ColumnName="RecoveryPhrase" />
+                <ScalarProperty Name="EthPrivateKey" ColumnName="EthPrivateKey" />
+                <ScalarProperty Name="EthPublicKey" ColumnName="EthPublicKey" />
+                <ScalarProperty Name="EthAddressID" ColumnName="EthAddressID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AuthProductModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UserKey" ColumnName="UserKey" />
+                <ScalarProperty Name="UserPhrase" ColumnName="UserPhrase" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="AuthProductModel.UserType">
+              <MappingFragment StoreEntitySet="UserTypes">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UserTypeDetail" ColumnName="UserTypeDetail" />
+                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="AuthProductModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Employee_Type_ID" ColumnName="Employee_Type_ID" />
+                <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Employee_Password" ColumnName="Employee_Password" />
+                <ScalarProperty Name="Employee_email" ColumnName="Employee_email" />
+                <ScalarProperty Name="Employee_Detai" ColumnName="Employee_Detai" />
+                <ScalarProperty Name="Employee_Type" ColumnName="Employee_Type" />
+                <ScalarProperty Name="Employee_Name" ColumnName="Employee_Name" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="AuthProductModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Serial_Num" ColumnName="Serial_Num" />
+                <ScalarProperty Name="FirstTransactionID" ColumnName="FirstTransactionID" />
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="TransactionFromAddress" ColumnName="TransactionFromAddress" />
+                <ScalarProperty Name="NumberOfTransactions" ColumnName="NumberOfTransactions" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Product_Address" ColumnName="Product_Address" />
+                <ScalarProperty Name="Product_Detail" ColumnName="Product_Detail" />
+                <ScalarProperty Name="Product_Type" ColumnName="Product_Type" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EthAddressID" ColumnName="EthAddressID" />
+                <ScalarProperty Name="Product_Key" ColumnName="Product_Key" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="AuthProductModel.Transaction">
+              <MappingFragment StoreEntitySet="Transactions">
+                <ScalarProperty Name="ErrorMessages" ColumnName="ErrorMessages" />
+                <ScalarProperty Name="InputDataHex" ColumnName="InputDataHex" />
+                <ScalarProperty Name="InputDataText" ColumnName="InputDataText" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EthAmount" ColumnName="EthAmount" />
+                <ScalarProperty Name="ToAddress" ColumnName="ToAddress" />
+                <ScalarProperty Name="FromAddress" ColumnName="FromAddress" />
+                <ScalarProperty Name="BlockNumber" ColumnName="BlockNumber" />
+                <ScalarProperty Name="GasUsed" ColumnName="GasUsed" />
+                <ScalarProperty Name="EthAddressID" ColumnName="EthAddressID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="TransactionHash" ColumnName="TransactionHash" />
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImgFiles">
+            <EntityTypeMapping TypeName="AuthProductModel.ImgFile">
+              <MappingFragment StoreEntitySet="ImgFiles">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="FileOrder" ColumnName="FileOrder" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductEthAddress_V">
+            <EntityTypeMapping TypeName="AuthProductModel.ProductEthAddress_V">
+              <MappingFragment StoreEntitySet="ProductEthAddress_V">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Enter_EthPrivateKey" ColumnName="Enter_EthPrivateKey" />
+                <ScalarProperty Name="Enter_ProductKey" ColumnName="Enter_ProductKey" />
+                <ScalarProperty Name="IsDirectClaim" ColumnName="IsDirectClaim" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="Employee_email" ColumnName="Employee_email" />
+                <ScalarProperty Name="Employee_Detai" ColumnName="Employee_Detai" />
+                <ScalarProperty Name="Employee_Name" ColumnName="Employee_Name" />
+                <ScalarProperty Name="OwnerEmail" ColumnName="OwnerEmail" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="TransactionHash_Now" ColumnName="TransactionHash_Now" />
+                <ScalarProperty Name="TransactionHash_First" ColumnName="TransactionHash_First" />
+                <ScalarProperty Name="Serial_Num" ColumnName="Serial_Num" />
+                <ScalarProperty Name="FirstTransactionID" ColumnName="FirstTransactionID" />
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="E_CreatedBy" ColumnName="E_CreatedBy" />
+                <ScalarProperty Name="E_CreatedDate" ColumnName="E_CreatedDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="WalletAddress" ColumnName="WalletAddress" />
+                <ScalarProperty Name="RecoveryPhrase" ColumnName="RecoveryPhrase" />
+                <ScalarProperty Name="EthPrivateKey" ColumnName="EthPrivateKey" />
+                <ScalarProperty Name="EthPublicKey" ColumnName="EthPublicKey" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="P_CreatedDate" ColumnName="P_CreatedDate" />
+                <ScalarProperty Name="P_CreatedBy" ColumnName="P_CreatedBy" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="TransactionFromAddress" ColumnName="TransactionFromAddress" />
+                <ScalarProperty Name="NumberOfTransactions" ColumnName="NumberOfTransactions" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Product_Address" ColumnName="Product_Address" />
+                <ScalarProperty Name="Product_Detail" ColumnName="Product_Detail" />
+                <ScalarProperty Name="Product_Type" ColumnName="Product_Type" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EthAddressID" ColumnName="EthAddressID" />
+                <ScalarProperty Name="Product_Key" ColumnName="Product_Key" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

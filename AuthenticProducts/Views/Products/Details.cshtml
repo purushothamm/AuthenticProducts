@@ -1,0 +1,119 @@
+﻿@model AuthenticProducts.Models.ProductEthAddress_V
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        @if (Model.ImagePath.Length > 5)
+        {
+            <dt></dt>
+            <dd>
+                <img src="@Url.Content(Model.ImagePath)" width="250" height="250" />
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Serial_Num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Serial_Num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Detail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EthPublicKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EthPublicKey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionHash_First)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionHash_First)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee_Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee_Detai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee_Detai)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee_email)
+        </dd>
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Product_ID }) |
+        @Html.ActionLink("Back to List", "Index") |*@
+
+    @Html.ActionLink("Logout", "Index", "Login", new { id = Model.UserID }, null) |
+    <a href="https://ropsten.etherscan.io/address/@Model.EthPublicKey">Check Detail in EtherScan</a>
+
+</p>

@@ -1,0 +1,147 @@
+﻿@model AuthenticProducts.Models.UserProductsModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model._user.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._user.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._user.UserEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._user.UserEmail)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model._user.UserPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._user.UserPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._user.UserPhrase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._user.UserPhrase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._user.UserKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._user.UserKey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._user.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._user.CreatedBy)j
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._user.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._user.CreatedDate)
+        </dd>*@
+
+    </dl>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model._ProductList[0].Product_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._ProductList[0].Product_Key)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._ProductList[0].Product_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._ProductList[0].Product_Detail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._ProductList[0].Product_Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._ProductList[0].IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._ProductList[0].NumberOfTransactions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._ProductList[0].TransactionFromAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._ProductList[0].TransactionDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model._ProductList)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Key)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serial_Num)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Detail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfTransactions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionFromAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Products", new { Prodid = item.Product_ID }, null) 
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Claim Product", "Claim", "ClaimProduct", new { id = Model._user.UserID }, null) |
+    @*@Html.ActionLink("Back to List", "Index") |*@
+    @Html.ActionLink("Logout", "Index", "Login",new { id = Model._user.UserID }, null)
+</p>

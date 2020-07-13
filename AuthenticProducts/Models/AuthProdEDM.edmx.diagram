@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5241c9f4a2a24fe2ad8c4d5c34a4b738" Name="Diagram1">
+        <EntityTypeShape EntityType="AuthProductModel.EthAddress" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AuthProductModel.User" Width="1.5" PointX="0.625" PointY="3.375" />
+        <EntityTypeShape EntityType="AuthProductModel.UserType" Width="1.5" PointX="0.625" PointY="6" />
+        <EntityTypeShape EntityType="AuthProductModel.Employee" Width="1.75" PointX="0.625" PointY="0.5" />
+        <EntityTypeShape EntityType="AuthProductModel.Product" Width="1.5" PointX="4.5" PointY="0.75" />
+        <EntityTypeShape EntityType="AuthProductModel.Transaction" Width="1.5" PointX="2.75" PointY="3.875" />
+        <EntityTypeShape EntityType="AuthProductModel.ImgFile" Width="1.5" PointX="4.5" PointY="5.375" />
+        <EntityTypeShape EntityType="AuthProductModel.ProductEthAddress_V" Width="1.5" PointX="6.125" PointY="0.75" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

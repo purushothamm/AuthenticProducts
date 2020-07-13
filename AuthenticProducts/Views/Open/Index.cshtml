@@ -1,0 +1,79 @@
+﻿@model  AuthenticProducts.Models.ProductModel
+@{
+    ViewBag.Title = "Open";
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search Product</title>
+    <style>
+        #Open_div {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="Open_div">
+        
+        <table>
+            <tr>
+                <td></td>
+                <td style="text-decoration:underline">Authentic Product</td>
+            </tr>
+            <tr>
+                @using (Html.BeginForm("SerialSearch", "Open", FormMethod.Post))
+                {
+                    <td>
+                        <a style="font-weight:bold">Search with Serial Number</a>
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.SerialNumber)
+                    </td>
+                    <td>
+                        <input type="Submit" name="name" value="Search" />
+                    </td>
+                }
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.SerialNumber)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <label class="field-validation-error">
+                        @Html.DisplayFor(model => model.ErrorMessage)
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a style="font-weight:bold" >Login</a>
+                </td>
+                <td>
+                    @Html.ActionLink("As a Admin or User", "Index","Login",new { }, null)
+                </td>
+                <td>
+                    @*<input  type="button" value="Login" onclick="Window.location.href('@Url.Action("Index", "Login")')"/>*@
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+

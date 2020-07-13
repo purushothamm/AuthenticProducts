@@ -1,0 +1,111 @@
+﻿@using AuthenticProducts.Models
+@model  AuthenticProducts.Models.LoginModel
+    
+@{
+    ViewBag.Title = "Login"; 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <style>
+        #login_div{
+            position: absolute;
+            left: 40%;
+            top:40%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+        .field-validation-error{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="login_div">
+        @using (Html.BeginForm("Autherize", "Login", FormMethod.Post))
+        {
+        <table>
+            <tr>
+                <td></td>
+                <td style="text-decoration:underline">Authentic Product</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.LoginUserName)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.LoginUserName)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.LoginUserName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.LoginPassword)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.LoginPassword)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.LoginPassword)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.UserTypeText)
+                </td>
+                <td>
+                    <select id="UserTypeText" name="UserTypeText">
+                        <option value="admin">admin</option>
+                        <option value="user">user</option>
+                    </select>
+                    @*@Html.EditorFor(model => model.UserTypeText)*@
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.UserTypeText)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="field-validation-error">
+                        @Html.DisplayFor(model => model.ErrorMessage)
+                    </label>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="Submit" name="name" value="Login" />
+                    <input type="Submit" name="name" value="Clear" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @Html.ActionLink("Go To Direct Claim", "Index", "Open", new { }, null)
+                </td>
+            </tr>
+        </table>
+        }
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<AuthenticProducts.Models.ProductEthAddress_V>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Admin Name</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_Key)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Serial_Num)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_Detail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_CreatedDate)
+        </th>
+        <td>
+            @Html.DisplayNameFor(model => model.OwnerName)
+        </td>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_Key)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Serial_Num)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_Detail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OwnerName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Product_ID }) |
+            @Html.ActionLink("Details", "Details", new { Prodid=item.Product_ID })
+        </td>
+    </tr>
+}
+</table>
+<p>
+    @Html.ActionLink("Logout", "Index", "Login", new { }, null)
+</p>

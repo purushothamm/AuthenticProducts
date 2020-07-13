@@ -1,0 +1,180 @@
+﻿@model AuthenticProducts.Models.ProductEthAddress_V
+
+@{
+    ViewBag.Title = "Direct Claim";
+}
+
+<h2>Directly Claim Product</h2>
+
+<style type="text/css">
+    h2 {
+        color: #069;
+    }
+</style>
+
+@using (Html.BeginForm("DirectClaim", "ClaimProduct", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <dl class="dl-horizontal">
+            @if (Model.ImagePath.Length > 5)
+            {
+                <dt></dt>
+                <dd>
+                    <img src="@Url.Content(Model.ImagePath)" width="250" height="250" />
+                </dd>
+            }
+            <dt>
+                @Html.DisplayNameFor(model => model.Product_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Product_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Serial_Num)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Serial_Num)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Product_Type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Product_Type)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Product_Detail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Product_Detail)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EthPublicKey)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EthPublicKey)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.P_CreatedDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.P_CreatedDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TransactionHash_First)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TransactionHash_First)
+            </dd>
+
+            @*<dt>
+            @Html.DisplayNameFor(model => model.OwnerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerEmail)
+        </dd>*@
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Employee_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Employee_Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Employee_Detai)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Employee_Detai)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Employee_email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Employee_email)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        @Html.ActionLink("Back to Search screen", "Index", "Open", new { }, null) |
+        <a href="https://ropsten.etherscan.io/address/@Model.EthPublicKey">Check Detail in EtherScan</a>
+    </div>
+    <div>
+        @if (Model.UserID == 0)
+        {
+
+            @Html.HiddenFor(model => model.Product_ID)
+            @Html.HiddenFor(model => model.TransactionHash_First)
+            @Html.HiddenFor(model => model.UserID)
+            @Html.HiddenFor(model => model.EthAddressID)
+
+            <hr />
+            <div><h2>Claim the product by entering the detial..</h2></div>
+            <hr />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Enter_ProductKey, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Enter_ProductKey, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Enter_ProductKey, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.Enter_EthPrivateKey, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Enter_EthPrivateKey, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Enter_EthPrivateKey, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+            <p style="color:red" >@Model.ErrorMessage</p>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Claim This product" class="btn btn-default" />
+                </div>
+            </div>
+
+            @*<div>
+                @Html.ActionLink("Claim this product", "DirectClaim", "ClaimProduct", new { id = Model }, null)
+            </div>*@
+        }
+        else
+        {
+            <hr/>
+            <div><h2 style="color:#228B22">This product has been claimed...</h2></div>            
+        }
+    </div>
+</div>
+}
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
